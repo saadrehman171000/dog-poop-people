@@ -120,3 +120,78 @@ export function ContactSweepSvg({ className }: SvgProps) {
     </svg>
   );
 }
+
+export function ResidentialYardSvg({ className }: SvgProps) {
+  return (
+    <svg
+      className={cn("h-full w-full", className)}
+      viewBox="0 0 120 120"
+      fill="none"
+      aria-hidden="true"
+    >
+      <rect width="120" height="120" rx="24" fill="#FFF8E6" />
+      <path d="M0 82C24 69 48 70 72 84C90 94 105 94 120 84V120H0V82Z" fill="#D8F1CB" />
+      <path d="M31 58L60 34L89 58V91H31V58Z" fill="white" stroke="#0F5A24" strokeWidth="5" strokeLinejoin="round" />
+      <path d="M51 91V70H69V91" stroke="#0F5A24" strokeWidth="5" strokeLinejoin="round" />
+      <path d="M24 58L60 29L96 58" stroke="#65C22E" strokeLinecap="round" strokeLinejoin="round" strokeWidth="6" />
+      <path d="M20 91H100" stroke="#0F5A24" strokeLinecap="round" strokeWidth="5" />
+    </svg>
+  );
+}
+
+export function WeeklyRoutesSvg({ className }: SvgProps) {
+  return (
+    <svg
+      className={cn("h-full w-full", className)}
+      viewBox="0 0 120 120"
+      fill="none"
+      aria-hidden="true"
+    >
+      <rect width="120" height="120" rx="24" fill="#E8F7DF" />
+      <rect x="25" y="31" width="70" height="66" rx="13" fill="white" stroke="#0F5A24" strokeWidth="5" />
+      <path d="M25 51H95" stroke="#0F5A24" strokeLinecap="round" strokeWidth="5" />
+      <path d="M43 24V37M77 24V37" stroke="#65C22E" strokeLinecap="round" strokeWidth="6" />
+      <path d="M44 70L55 81L78 63" stroke="#65C22E" strokeLinecap="round" strokeLinejoin="round" strokeWidth="7" />
+      <path d="M32 103C52 95 71 95 91 103" stroke="#F5B84B" strokeLinecap="round" strokeWidth="5" />
+    </svg>
+  );
+}
+
+export function OneTimeCleanupSvg({ className }: SvgProps) {
+  return (
+    <svg
+      className={cn("h-full w-full", className)}
+      viewBox="0 0 120 120"
+      fill="none"
+      aria-hidden="true"
+    >
+      <rect width="120" height="120" rx="24" fill="#EAF6FF" />
+      <path d="M31 80C49 69 71 69 89 80" stroke="#65C22E" strokeLinecap="round" strokeWidth="8" />
+      <path d="M33 91H87" stroke="#0F5A24" strokeLinecap="round" strokeWidth="6" />
+      <path d="M58 29V75" stroke="#0F5A24" strokeLinecap="round" strokeWidth="6" />
+      <path d="M58 36C73 32 85 36 94 48C84 61 72 65 58 60V36Z" fill="#F5B84B" stroke="#0F5A24" strokeLinejoin="round" strokeWidth="5" />
+      <path d="M58 43C45 39 35 42 27 52C35 63 45 66 58 61V43Z" fill="white" stroke="#0F5A24" strokeLinejoin="round" strokeWidth="5" />
+      <circle cx="85" cy="29" r="5" fill="#65C22E" />
+      <circle cx="36" cy="30" r="4" fill="#65C22E" />
+    </svg>
+  );
+}
+
+export function MultiDogHomesSvg({ className }: SvgProps) {
+  return (
+    <svg
+      className={cn("h-full w-full", className)}
+      viewBox="0 0 120 120"
+      fill="none"
+      aria-hidden="true"
+    >
+      <rect width="120" height="120" rx="24" fill="#FFF0CF" />
+      <path d="M60 24C75 37 91 36 91 36V58C91 78 78 93 60 99C42 93 29 78 29 58V36C29 36 45 37 60 24Z" fill="white" stroke="#0F5A24" strokeLinejoin="round" strokeWidth="5" />
+      <circle cx="47" cy="61" r="8" fill="#65C22E" />
+      <circle cx="73" cy="61" r="8" fill="#65C22E" />
+      <path d="M51 78C56 82 64 82 69 78" stroke="#0F5A24" strokeLinecap="round" strokeWidth="5" />
+      <path d="M42 47L34 39M78 47L86 39" stroke="#0F5A24" strokeLinecap="round" strokeWidth="5" />
+      <path d="M60 25V43" stroke="#F5B84B" strokeLinecap="round" strokeWidth="6" />
+    </svg>
+  );
+}

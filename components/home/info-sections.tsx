@@ -1,10 +1,16 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { CalendarCheck2, MapPin, MessageCircle, Shield, Sparkles } from "lucide-react";
+import { CalendarCheck2, MessageCircle, Sparkles } from "lucide-react";
 import Image from "next/image";
 
-import { ContactSweepSvg } from "@/components/home/brand-svg";
+import {
+  ContactSweepSvg,
+  MultiDogHomesSvg,
+  OneTimeCleanupSvg,
+  ResidentialYardSvg,
+  WeeklyRoutesSvg,
+} from "@/components/home/brand-svg";
 import { Button } from "@/components/ui/button";
 
 const steps = [
@@ -22,6 +28,29 @@ const steps = [
     icon: Sparkles,
     title: "Enjoy the yard",
     copy: "We handle the cleanup so your outdoor space is ready when you are.",
+  },
+];
+
+const serviceAreas = [
+  {
+    title: "Residential yards",
+    background: "#FFF8E6",
+    Illustration: ResidentialYardSvg,
+  },
+  {
+    title: "Weekly routes",
+    background: "#E8F7DF",
+    Illustration: WeeklyRoutesSvg,
+  },
+  {
+    title: "One-time cleanups",
+    background: "#EAF6FF",
+    Illustration: OneTimeCleanupSvg,
+  },
+  {
+    title: "Multi-dog homes",
+    background: "#FFF0CF",
+    Illustration: MultiDogHomesSvg,
   },
 ];
 
@@ -105,30 +134,18 @@ export function InfoSections() {
             </p>
           </div>
           <div className="grid gap-4 sm:grid-cols-2">
-            {[
-              ["Residential yards", "#FFF8E6"],
-              ["Weekly routes", "#E8F7DF"],
-              ["One-time cleanups", "#EAF6FF"],
-              ["Multi-dog homes", "#FFF0CF"],
-            ].map(([item, color]) => (
-                <div
-                  key={item}
-                  className="flex min-h-32 items-center gap-4 rounded-[1.5rem] border border-[#0F5A24]/10 p-4 shadow-[0_16px_42px_rgba(38,46,32,0.08)]"
-                  style={{ backgroundColor: color }}
-                >
-                  <span className="flex size-10 shrink-0 items-center justify-center rounded-2xl bg-white/78 text-[#0F5A24]">
-                    {item === "Weekly routes" ? (
-                      <CalendarCheck2 className="size-4" />
-                    ) : item === "Multi-dog homes" ? (
-                      <Shield className="size-4" />
-                    ) : (
-                      <MapPin className="size-4" />
-                    )}
-                  </span>
-                  <p className="font-heading text-lg font-extrabold">{item}</p>
-                </div>
-              ),
-            )}
+            {serviceAreas.map(({ title, background, Illustration }) => (
+              <div
+                key={title}
+                className="flex min-h-36 items-center gap-4 rounded-[1.5rem] border border-[#0F5A24]/10 p-4 shadow-[0_16px_42px_rgba(38,46,32,0.08)]"
+                style={{ backgroundColor: background }}
+              >
+                <span className="block size-20 shrink-0 overflow-hidden rounded-[1.15rem] shadow-[inset_0_0_0_1px_rgba(15,90,36,0.08)]">
+                  <Illustration />
+                </span>
+                <p className="font-heading text-lg font-extrabold leading-tight">{title}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
