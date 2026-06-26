@@ -486,7 +486,7 @@ export function InfoSections() {
           </motion.div>
 
           <motion.div
-            className="relative mt-16 overflow-hidden rounded-[2.5rem] border border-[#0F5A24]/12 bg-[linear-gradient(105deg,rgba(232,247,223,0.72),rgba(255,248,230,0.9)_48%,rgba(234,246,255,0.58))] p-4 shadow-[0_32px_110px_rgba(31,46,35,0.12)] sm:p-6 lg:rounded-[3rem] lg:p-8 xl:p-10"
+            className="relative mt-16 overflow-hidden rounded-[2.5rem] border border-[#0F5A24]/12 bg-[linear-gradient(105deg,rgba(232,247,223,0.72),rgba(255,248,230,0.9)_48%,rgba(234,246,255,0.58))] p-4 shadow-[0_32px_110px_rgba(31,46,35,0.12)] sm:p-6 lg:rounded-[3rem] lg:p-5 xl:p-6"
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, amount: 0.24 }}
@@ -494,7 +494,7 @@ export function InfoSections() {
             transition={{ duration: 0.7, delay: 0.08 }}
           >
             <div className="absolute inset-4 rounded-[2rem] border border-white/70 lg:rounded-[2.4rem]" />
-            <div className="relative grid gap-6 lg:grid-cols-3 lg:items-center lg:gap-5 xl:gap-8">
+            <div className="relative grid gap-6 lg:grid-cols-3 lg:items-center lg:gap-3 xl:gap-4">
               {testimonialImages.map((testimonial, index) => (
                 <motion.div
                   key={testimonial.src}
