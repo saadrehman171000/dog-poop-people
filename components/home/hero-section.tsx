@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { ArrowRight, CheckCircle2, ShieldCheck, Sparkles } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 
 import { HeroFieldLines, PriceLeafSvg } from "@/components/home/brand-svg";
 import { Button } from "@/components/ui/button";
@@ -91,10 +92,10 @@ export function HeroSection() {
             className="mt-8 flex flex-col gap-3 sm:flex-row"
           >
             <Button asChild size="default">
-              <a href="#contact">
-                Get Started
+              <Link href="/customer-qualification">
+                Customer Qualification
                 <ArrowRight className="size-4" />
-              </a>
+              </Link>
             </Button>
             <Button asChild size="default" variant="secondary">
               <a href="#pricing">View Pricing</a>
