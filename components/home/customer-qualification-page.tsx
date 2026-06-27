@@ -136,14 +136,14 @@ export function CustomerQualificationPage() {
           >
             <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-white/22 bg-white/12 px-4 py-2 text-sm font-extrabold text-[#FFF8E6] shadow-[0_14px_40px_rgba(0,0,0,0.18)] backdrop-blur-md">
               <ClipboardCheck className="size-4 text-[#65C22E]" />
-              Customer Qualification
+              Request a Service
             </div>
             <h1 className="font-heading text-4xl font-extrabold leading-[1.02] tracking-tight sm:text-6xl">
-              Let’s Confirm Your Yard Is A Good Fit.
+              Start Your Service Request.
             </h1>
             <p className="mt-6 max-w-2xl text-lg leading-8 text-white/82">
-              A guided four-step request form for Loudoun County homes, weekly
-              cleanup, one-time service, and dog areas up to 1/4 acre.
+              A simple four-step signup request for Loudoun County homes,
+              weekly cleanup, one-time service, and dog areas up to 1/4 acre.
             </p>
           </motion.div>
 
@@ -179,7 +179,7 @@ export function CustomerQualificationPage() {
               Progress
             </p>
             <h2 className="mt-4 font-heading text-3xl font-extrabold text-[#0F5A24]">
-              Customer Qualification
+              Request a Service
             </h2>
             <div className="mt-8 grid gap-3">
               {steps.map((step, index) => {

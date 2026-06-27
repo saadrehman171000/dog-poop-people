@@ -49,7 +49,7 @@ export function ContactPage() {
                 <a href="#contact">Ask a Question</a>
               </Button>
               <Button asChild size="lg" variant="secondary">
-                <Link href="/customer-qualification">Customer Qualification</Link>
+                <Link href="/customer-qualification">Request a Service</Link>
               </Button>
             </div>
           </motion.div>

@@ -93,7 +93,7 @@ export function HeroSection() {
           >
             <Button asChild size="default">
               <Link href="/customer-qualification">
-                Customer Qualification
+                Request a Service
                 <ArrowRight className="size-4" />
               </Link>
             </Button>

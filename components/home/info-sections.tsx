@@ -389,7 +389,7 @@ export function InfoSections() {
                   variant={plan.featured ? "default" : "outline"}
                   className="mt-auto w-full"
                 >
-                  <Link href="/customer-qualification">Customer Qualification</Link>
+                  <Link href="/customer-qualification">Request a Service</Link>
                 </Button>
               </motion.article>
             ))}
@@ -643,7 +643,7 @@ export function InfoSections() {
             <div className="mt-9 flex flex-col gap-3 sm:flex-row">
               <Button asChild size="lg">
                 <Link href="/customer-qualification">
-                  Customer Qualification
+                  Request a Service
                   <ArrowRight className="size-4" />
                 </Link>
               </Button>

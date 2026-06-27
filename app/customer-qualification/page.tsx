@@ -3,9 +3,9 @@ import type { Metadata } from "next";
 import { CustomerQualificationPage } from "@/components/home/customer-qualification-page";
 
 export const metadata: Metadata = {
-  title: "Customer Qualification | Dog Poop People",
+  title: "Request a Service | Dog Poop People",
   description:
-    "Submit a frontend-only customer qualification request for Dog Poop People service in Loudoun County, Virginia.",
+    "Submit a service request for Dog Poop People in Loudoun County, Virginia.",
 };
 
 export default function Page() {

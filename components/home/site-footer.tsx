@@ -9,7 +9,7 @@ const footerLinks = [
   { label: "Pricing", href: "/#pricing" },
   { label: "How It Works", href: "/#how-it-works" },
   { label: "Service Area", href: "/#service-area" },
-  { label: "Customer Qualification", href: "/customer-qualification" },
+  { label: "Request a Service", href: "/customer-qualification" },
   { label: "Contact", href: "/contact" },
 ];
 

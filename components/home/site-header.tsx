@@ -55,7 +55,7 @@ export function SiteHeader() {
         </div>
 
         <Button asChild size="sm" className="hidden h-11 px-5 shadow-[0_14px_38px_rgba(101,194,46,0.28)] sm:inline-flex">
-          <Link href="/customer-qualification">Customer Qualification</Link>
+          <Link href="/customer-qualification">Request a Service</Link>
         </Button>
 
         <button
@@ -92,7 +92,7 @@ export function SiteHeader() {
                 ))}
                 <Button asChild size="sm" className="mt-2 h-11 w-full">
                   <Link href="/customer-qualification" onClick={() => setIsMenuOpen(false)}>
-                    Customer Qualification
+                    Request a Service
                   </Link>
                 </Button>
               </div>
