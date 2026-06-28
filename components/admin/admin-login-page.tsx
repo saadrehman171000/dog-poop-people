@@ -96,7 +96,7 @@ export function AdminLoginPage() {
         <div className="relative isolate flex min-h-dvh items-center justify-center overflow-hidden px-4 py-10 sm:px-6 lg:px-8">
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(101,194,46,0.18),transparent_34%),radial-gradient(circle_at_bottom_left,rgba(15,90,36,0.12),transparent_35%),linear-gradient(135deg,#F8FAFC_0%,#FFFFFF_52%,#F1F8ED_100%)]" />
           <motion.div
-            className="absolute right-10 top-12 hidden rounded-2xl border border-white/80 bg-white/70 px-4 py-3 text-sm font-extrabold text-[#0F5A24] shadow-[0_20px_60px_rgba(15,90,36,0.12)] backdrop-blur-xl sm:flex sm:items-center sm:gap-2"
+            className="absolute right-6 top-8 z-10 hidden max-w-[13rem] rounded-2xl border border-white/80 bg-white/78 px-4 py-3 text-sm font-extrabold text-[#0F5A24] shadow-[0_20px_60px_rgba(15,90,36,0.12)] backdrop-blur-xl xl:flex xl:items-center xl:gap-2"
             initial={{ opacity: 0, y: -14 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.55, delay: 0.25 }}

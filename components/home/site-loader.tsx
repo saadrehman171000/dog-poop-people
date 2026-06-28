@@ -8,8 +8,8 @@ type SiteLoaderProps = {
   onComplete: () => void;
 };
 
-const LOADER_HOLD_MS = 2400;
-const LOADER_EXIT_MS = 800;
+const LOADER_HOLD_MS = 520;
+const LOADER_EXIT_MS = 340;
 
 export function SiteLoader({ onComplete }: SiteLoaderProps) {
   const [isVisible, setIsVisible] = useState(true);
@@ -104,7 +104,7 @@ export function SiteLoader({ onComplete }: SiteLoaderProps) {
                 className="h-full rounded-full bg-[linear-gradient(90deg,#65C22E,#F5B84B,#FFF8E6)]"
                 initial={{ width: "0%" }}
                 animate={{ width: "100%" }}
-                transition={{ duration: 2, ease: [0.22, 1, 0.36, 1] }}
+                transition={{ duration: 0.72, ease: [0.22, 1, 0.36, 1] }}
               />
             </div>
           </motion.div>

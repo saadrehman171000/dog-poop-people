@@ -57,11 +57,11 @@ export function HeroSection() {
           className="max-w-3xl pt-8 text-white"
           initial="hidden"
           animate="visible"
-          transition={{ staggerChildren: 0.12, delayChildren: 0.25 }}
+          transition={{ staggerChildren: 0.07, delayChildren: 0.02 }}
         >
           <motion.div
             variants={fadeUp}
-            transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
+            transition={{ duration: 0.42, ease: [0.22, 1, 0.36, 1] }}
             className="mb-6 inline-flex items-center gap-2 rounded-full border border-white/22 bg-[#FFF8E6]/12 px-4 py-2 text-sm font-semibold text-[#FFF8E6] shadow-[0_14px_40px_rgba(0,0,0,0.18)] backdrop-blur-md"
           >
             <CheckCircle2 className="size-4 text-[#65C22E]" />
@@ -70,7 +70,7 @@ export function HeroSection() {
 
           <motion.h1
             variants={fadeUp}
-            transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+            transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
             className="font-heading text-3xl font-extrabold leading-[1.02] tracking-tight text-balance sm:text-5xl lg:text-5xl xl:text-6xl"
           >
             No Contracts. No Hidden Fees. Just Reliable Yard Cleanup.
@@ -78,7 +78,7 @@ export function HeroSection() {
 
           <motion.p
             variants={fadeUp}
-            transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+            transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
             className="mt-6 max-w-2xl text-base leading-7 text-[#F8F1DF]/84 sm:text-base xl:text-lg"
           >
             Dog Poop People keeps your yard clean with simple pricing, dependable
@@ -88,7 +88,7 @@ export function HeroSection() {
 
           <motion.div
             variants={fadeUp}
-            transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+            transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
             className="mt-8 flex flex-col gap-3 sm:flex-row"
           >
             <Button asChild size="default">
@@ -104,7 +104,7 @@ export function HeroSection() {
 
           <motion.div
             variants={fadeUp}
-            transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+            transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
             className="mt-8 grid max-w-2xl gap-3 sm:grid-cols-2"
           >
             <div className="flex items-center gap-3 rounded-2xl border border-white/16 bg-white/10 p-4 text-[#FFF8E6] backdrop-blur-md">
@@ -123,7 +123,7 @@ export function HeroSection() {
           className="grid gap-3 sm:grid-cols-3 lg:grid-cols-1 lg:justify-self-end"
           initial={{ y: 34, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
-          transition={{ duration: 0.75, ease: [0.22, 1, 0.36, 1], delay: 0.45 }}
+          transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1], delay: 0.08 }}
         >
           {pricing.map((item, index) => (
             <motion.article

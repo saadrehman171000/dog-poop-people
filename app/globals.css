@@ -31,11 +31,26 @@ body {
   color: var(--foreground);
   font-family: var(--font-body), system-ui, sans-serif;
   text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  font-feature-settings: "cv02", "cv03", "cv04", "cv11";
 }
 
 ::selection {
   background: rgba(101, 194, 46, 0.32);
   color: var(--deep-green);
+}
+
+:where(a, button, input, select, textarea):focus-visible {
+  outline: 3px solid rgba(101, 194, 46, 0.55);
+  outline-offset: 3px;
+}
+
+.no-scrollbar {
+  scrollbar-width: none;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
 }
 
 @media (prefers-reduced-motion: reduce) {

@@ -10,7 +10,6 @@ import {
   Eye,
   FileDown,
   Filter,
-  Menu,
   Save,
   Search,
   X,
@@ -124,7 +123,7 @@ function Sidebar({
   onLogout: () => void;
 }) {
   return (
-    <aside className="fixed inset-y-0 left-0 z-40 hidden w-[280px] border-r border-[#0F5A24]/8 bg-white/90 px-5 py-6 shadow-[18px_0_60px_rgba(15,90,36,0.06)] backdrop-blur-2xl lg:block">
+    <aside className="fixed inset-y-0 left-0 z-40 hidden w-[280px] border-r border-[#0F5A24]/8 bg-white/95 px-5 py-6 shadow-[18px_0_60px_rgba(15,90,36,0.07)] backdrop-blur-2xl lg:block">
       <div className="flex items-center gap-3">
         <Image
           src="/logo.png"
@@ -157,7 +156,7 @@ function Sidebar({
                 onSelect(item.label as AdminSection);
               }}
               className={cn(
-                "group flex h-12 items-center gap-3 rounded-2xl px-4 text-sm font-extrabold transition duration-300",
+                "group flex h-12 items-center gap-3 rounded-2xl px-4 text-sm font-extrabold transition duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#65C22E]/70",
                 item.label === activeSection
                   ? "bg-[#0F5A24] text-white shadow-[0_18px_45px_rgba(15,90,36,0.22)]"
                   : "text-[#405244]/78 hover:-translate-y-0.5 hover:bg-[#F3F8F1] hover:text-[#0F5A24]",
@@ -190,21 +189,18 @@ function MobileNav({
   onLogout: () => void;
 }) {
   return (
-    <div className="sticky top-0 z-30 border-b border-[#0F5A24]/8 bg-white/88 px-4 py-3 backdrop-blur-xl lg:hidden">
+    <div className="sticky top-0 z-30 border-b border-[#0F5A24]/8 bg-white/94 px-4 py-3 shadow-[0_10px_34px_rgba(15,90,36,0.06)] backdrop-blur-xl lg:hidden">
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-3">
           <Image src="/logo.png" alt="Dog Poop People" width={44} height={42} className="h-10 w-auto" />
           <span className="font-heading text-base font-extrabold text-[#0F5A24]">Admin Portal</span>
         </div>
-        <button
-          type="button"
-          aria-label="Open admin navigation"
-          className="flex size-11 items-center justify-center rounded-2xl border border-[#0F5A24]/10 bg-white text-[#0F5A24] shadow-sm"
-        >
-          <Menu className="size-5" />
-        </button>
+        <span className="rounded-full bg-[#E8F7DF] px-3 py-1.5 text-xs font-extrabold text-[#0F5A24] ring-1 ring-[#0F5A24]/8">
+          Mock CRM
+        </span>
       </div>
-      <div className="mt-3 flex gap-2 overflow-x-auto pb-1">
+      <div className="relative -mx-1 mt-3">
+        <div className="no-scrollbar flex gap-2 overflow-x-auto px-1 pb-1">
         {sidebarItems.map((item) => (
           <button
             key={item.label}
@@ -218,13 +214,15 @@ function MobileNav({
               onSelect(item.label as AdminSection);
             }}
             className={cn(
-              "shrink-0 rounded-full px-4 py-2 text-xs font-extrabold",
-              item.label === activeSection ? "bg-[#0F5A24] text-white" : "bg-[#F1F5F9] text-[#405244]",
+              "shrink-0 rounded-full px-4 py-2.5 text-xs font-extrabold shadow-sm transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#65C22E]/70",
+              item.label === activeSection ? "bg-[#0F5A24] text-white shadow-[0_10px_28px_rgba(15,90,36,0.2)]" : "bg-[#F1F5F9] text-[#405244]",
             )}
           >
             {item.label}
           </button>
         ))}
+        </div>
+        <div className="pointer-events-none absolute inset-y-0 right-0 w-10 bg-gradient-to-l from-white/95 to-transparent" />
       </div>
     </div>
   );
@@ -262,54 +260,55 @@ function DashboardHeader({
         </p>
       </div>
 
-      <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
+      <div className="flex flex-col gap-3 sm:flex-row sm:items-center xl:justify-end">
         <label className="relative min-w-0 sm:w-[320px]">
           <Search className="pointer-events-none absolute left-4 top-1/2 size-4 -translate-y-1/2 text-[#0F5A24]/46" />
           <input
             type="search"
             placeholder="Search leads, customers, jobs"
-            className="h-12 w-full rounded-2xl border border-[#0F5A24]/10 bg-white px-11 text-sm font-bold text-[#12321C] shadow-[0_12px_35px_rgba(15,90,36,0.06)] outline-none transition focus:border-[#65C22E]/70 focus:ring-4 focus:ring-[#65C22E]/14"
+            className="h-12 w-full rounded-2xl border border-[#0F5A24]/10 bg-white px-11 text-sm font-bold text-[#12321C] shadow-[0_12px_35px_rgba(15,90,36,0.06)] outline-none transition placeholder:text-[#405244]/42 focus:border-[#65C22E]/70 focus:ring-4 focus:ring-[#65C22E]/14"
           />
         </label>
         <div className="flex items-center gap-3">
           <div className="relative">
-          <button
-            type="button"
-            aria-label="Notifications"
-            onClick={onToggleNotifications}
-            className="relative flex size-12 items-center justify-center rounded-2xl border border-[#0F5A24]/10 bg-white text-[#0F5A24] shadow-[0_12px_35px_rgba(15,90,36,0.06)] transition hover:-translate-y-0.5"
-          >
-            <Bell className="size-5" />
-            <span className="absolute right-3 top-3 size-2 rounded-full bg-[#65C22E]" />
-          </button>
-          {notificationOpen ? (
-            <motion.div
-              className="absolute right-0 top-[calc(100%+0.75rem)] z-50 w-[min(22rem,calc(100vw-2rem))] rounded-2xl border border-[#0F5A24]/10 bg-white p-3 shadow-[0_24px_80px_rgba(15,90,36,0.18)]"
-              initial={{ opacity: 0, y: -8, scale: 0.98 }}
-              animate={{ opacity: 1, y: 0, scale: 1 }}
-              transition={{ duration: 0.18 }}
+            <button
+              type="button"
+              aria-label="Notifications"
+              aria-expanded={notificationOpen}
+              onClick={onToggleNotifications}
+              className="relative flex size-12 items-center justify-center rounded-2xl border border-[#0F5A24]/10 bg-white text-[#0F5A24] shadow-[0_12px_35px_rgba(15,90,36,0.06)] transition hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#65C22E]/70"
             >
-              <div className="flex items-center justify-between px-2 py-2">
-                <p className="font-heading text-base font-extrabold text-[#0F5A24]">Notifications</p>
-                <span className="rounded-full bg-[#E8F7DF] px-2.5 py-1 text-xs font-extrabold text-[#0F5A24]">
-                  {notificationItems.length} new
-                </span>
-              </div>
-              <div className="mt-1 grid gap-2">
-                {notificationItems.map((item) => (
-                  <button
-                    key={item.title}
-                    type="button"
-                    className="rounded-2xl bg-[#F8FAFC] p-3 text-left transition hover:bg-[#F3F8F1]"
-                  >
-                    <p className="text-sm font-extrabold text-[#12321C]">{item.title}</p>
-                    <p className="mt-1 text-xs font-semibold leading-5 text-[#405244]/64">{item.detail}</p>
-                    <p className="mt-2 text-xs font-bold text-[#65C22E]">{item.time}</p>
-                  </button>
-                ))}
-              </div>
-            </motion.div>
-          ) : null}
+              <Bell className="size-5" />
+              <span className="absolute right-3 top-3 size-2 rounded-full bg-[#65C22E]" />
+            </button>
+            {notificationOpen ? (
+              <motion.div
+                className="absolute right-0 top-[calc(100%+0.75rem)] z-50 w-[min(22rem,calc(100vw-2rem))] rounded-2xl border border-[#0F5A24]/10 bg-white p-3 shadow-[0_24px_80px_rgba(15,90,36,0.18)]"
+                initial={{ opacity: 0, y: -8, scale: 0.98 }}
+                animate={{ opacity: 1, y: 0, scale: 1 }}
+                transition={{ duration: 0.18 }}
+              >
+                <div className="flex items-center justify-between px-2 py-2">
+                  <p className="font-heading text-base font-extrabold text-[#0F5A24]">Notifications</p>
+                  <span className="rounded-full bg-[#E8F7DF] px-2.5 py-1 text-xs font-extrabold text-[#0F5A24]">
+                    {notificationItems.length} new
+                  </span>
+                </div>
+                <div className="mt-1 grid gap-2">
+                  {notificationItems.map((item) => (
+                    <button
+                      key={item.title}
+                      type="button"
+                      className="rounded-2xl bg-[#F8FAFC] p-3 text-left transition hover:bg-[#F3F8F1] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#65C22E]/70"
+                    >
+                      <p className="text-sm font-extrabold text-[#12321C]">{item.title}</p>
+                      <p className="mt-1 text-xs font-semibold leading-5 text-[#405244]/64">{item.detail}</p>
+                      <p className="mt-2 text-xs font-bold text-[#65C22E]">{item.time}</p>
+                    </button>
+                  ))}
+                </div>
+              </motion.div>
+            ) : null}
           </div>
           <div className="flex h-12 items-center gap-3 rounded-2xl border border-[#0F5A24]/10 bg-white px-3 shadow-[0_12px_35px_rgba(15,90,36,0.06)]">
             <div className="flex size-8 items-center justify-center rounded-xl bg-[#0F5A24] font-heading text-xs font-extrabold text-white">
@@ -334,7 +333,7 @@ function StatCardView({ stat, index }: { stat: StatCard; index: number }) {
       {...cardMotion}
       transition={{ ...cardMotion.transition, delay: index * 0.04 }}
       className={cn(
-        "group rounded-2xl border border-white bg-gradient-to-br p-5 shadow-[0_18px_55px_rgba(15,90,36,0.08)] transition duration-300 hover:-translate-y-1 hover:shadow-[0_24px_70px_rgba(15,90,36,0.13)]",
+        "group rounded-2xl border border-[#0F5A24]/8 bg-gradient-to-br p-5 shadow-[0_18px_55px_rgba(15,90,36,0.09)] transition duration-300 hover:-translate-y-1 hover:border-[#65C22E]/25 hover:shadow-[0_24px_70px_rgba(15,90,36,0.14)]",
         stat.gradient,
       )}
     >
@@ -370,7 +369,7 @@ function RecentLeads({
   return (
     <motion.section
       {...cardMotion}
-      className="min-w-0 rounded-2xl border border-white bg-white p-5 shadow-[0_20px_70px_rgba(15,90,36,0.08)]"
+      className="min-w-0 rounded-2xl border border-[#0F5A24]/8 bg-white p-5 shadow-[0_20px_70px_rgba(15,90,36,0.08)]"
     >
       <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
         <div>
@@ -381,7 +380,7 @@ function RecentLeads({
           <button
             type="button"
             onClick={onViewAll}
-            className="inline-flex items-center gap-2 rounded-xl bg-[#F3F8F1] px-4 py-2 text-sm font-extrabold text-[#0F5A24] transition hover:-translate-y-0.5"
+            className="inline-flex items-center justify-center gap-2 rounded-xl bg-[#F3F8F1] px-4 py-2 text-sm font-extrabold text-[#0F5A24] transition hover:-translate-y-0.5 hover:bg-[#E8F7DF] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#65C22E]/70"
           >
             View all
             <ChevronRight className="size-4" />
@@ -389,7 +388,14 @@ function RecentLeads({
         ) : null}
       </div>
 
-      <div className="mt-5 w-full max-w-full overflow-x-auto">
+      <div className="mt-4 flex items-center justify-between gap-3 sm:hidden">
+        <span className="rounded-full bg-[#F3F8F1] px-3 py-1 text-xs font-extrabold text-[#0F5A24]">
+          Swipe table
+        </span>
+        <span className="h-px flex-1 bg-gradient-to-r from-[#0F5A24]/10 to-transparent" />
+      </div>
+
+      <div className="no-scrollbar mt-5 w-full max-w-full overflow-x-auto">
         <table className="w-full min-w-[860px] border-separate border-spacing-y-2 text-left">
           <thead>
             <tr className="text-xs font-extrabold uppercase text-[#405244]/48">
@@ -423,7 +429,7 @@ function RecentLeads({
                     <button
                       type="button"
                       onClick={() => onViewLead(lead)}
-                      className="flex size-9 items-center justify-center rounded-xl bg-white text-[#0F5A24] shadow-sm transition hover:-translate-y-0.5"
+                      className="flex size-9 items-center justify-center rounded-xl bg-white text-[#0F5A24] shadow-sm transition hover:-translate-y-0.5 hover:bg-[#E8F7DF] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#65C22E]/70"
                       aria-label={`View ${lead.customer}`}
                     >
                       <Eye className="size-4" />
@@ -431,7 +437,7 @@ function RecentLeads({
                     <button
                       type="button"
                       onClick={() => onEditLead(lead)}
-                      className="flex size-9 items-center justify-center rounded-xl bg-white text-[#0F5A24] shadow-sm transition hover:-translate-y-0.5"
+                      className="flex size-9 items-center justify-center rounded-xl bg-white text-[#0F5A24] shadow-sm transition hover:-translate-y-0.5 hover:bg-[#E8F7DF] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#65C22E]/70"
                       aria-label={`Edit ${lead.customer}`}
                     >
                       <Edit3 className="size-4" />
@@ -481,7 +487,7 @@ function QuickActions({
             onClick={actionHandlers[action.title]}
             {...cardMotion}
             transition={{ ...cardMotion.transition, delay: index * 0.04 }}
-            className="group rounded-2xl border border-white bg-white p-5 text-left shadow-[0_18px_55px_rgba(15,90,36,0.07)] transition duration-300 hover:-translate-y-1 hover:shadow-[0_24px_70px_rgba(15,90,36,0.12)]"
+            className="group rounded-2xl border border-[#0F5A24]/8 bg-white p-5 text-left shadow-[0_18px_55px_rgba(15,90,36,0.08)] transition duration-300 hover:-translate-y-1 hover:border-[#65C22E]/25 hover:shadow-[0_24px_70px_rgba(15,90,36,0.13)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#65C22E]/70"
           >
             <span className="flex size-12 items-center justify-center rounded-2xl bg-[#E8F7DF] text-[#0F5A24] transition group-hover:bg-[#0F5A24] group-hover:text-[#65C22E]">
               <Icon className="size-5" />
@@ -500,7 +506,7 @@ function BusinessOverview() {
 
   return (
     <section className="grid gap-5 xl:grid-cols-2">
-      <motion.article {...cardMotion} className="rounded-2xl border border-white bg-white p-6 shadow-[0_20px_70px_rgba(15,90,36,0.08)]">
+      <motion.article {...cardMotion} className="rounded-2xl border border-[#0F5A24]/8 bg-white p-6 shadow-[0_20px_70px_rgba(15,90,36,0.08)]">
         <h2 className="font-heading text-xl font-extrabold tracking-normal text-[#0F5A24]">Service Distribution</h2>
         <div className="mt-7 grid gap-6">
           {[
@@ -526,7 +532,7 @@ function BusinessOverview() {
         </div>
       </motion.article>
 
-      <motion.article {...cardMotion} className="rounded-2xl border border-white bg-white p-6 shadow-[0_20px_70px_rgba(15,90,36,0.08)]">
+      <motion.article {...cardMotion} className="rounded-2xl border border-[#0F5A24]/8 bg-white p-6 shadow-[0_20px_70px_rgba(15,90,36,0.08)]">
         <div className="flex items-center justify-between gap-4">
           <h2 className="font-heading text-xl font-extrabold tracking-normal text-[#0F5A24]">Lead Activity</h2>
           <span className="rounded-full bg-[#F3F8F1] px-3 py-1 text-xs font-extrabold text-[#0F5A24]">Last 10 days</span>
@@ -562,7 +568,7 @@ function SectionSummary({
   return (
     <motion.section
       {...cardMotion}
-      className="rounded-2xl border border-white bg-gradient-to-br from-[#0F5A24] via-[#16692D] to-[#65C22E] p-6 text-white shadow-[0_24px_80px_rgba(15,90,36,0.18)]"
+      className="rounded-2xl border border-white/20 bg-gradient-to-br from-[#0F5A24] via-[#16692D] to-[#65C22E] p-6 text-white shadow-[0_24px_80px_rgba(15,90,36,0.18)]"
     >
       <div className="grid gap-6 lg:grid-cols-[1fr_auto] lg:items-end">
         <div>
@@ -603,7 +609,7 @@ function LeadFilters({
   return (
     <motion.section
       {...cardMotion}
-      className="rounded-2xl border border-white bg-white p-5 shadow-[0_18px_55px_rgba(15,90,36,0.07)]"
+      className="rounded-2xl border border-[#0F5A24]/8 bg-white p-5 shadow-[0_18px_55px_rgba(15,90,36,0.07)]"
     >
       <div className="flex flex-col gap-4 xl:flex-row xl:items-end xl:justify-between">
         <div>
@@ -676,9 +682,9 @@ function LeadModal({
   const isEdit = state.mode === "edit";
 
   return (
-    <div className="fixed inset-0 z-[80] flex items-end justify-center bg-[#06150B]/40 px-4 py-5 backdrop-blur-sm sm:items-center">
+    <div className="fixed inset-0 z-[80] flex items-end justify-center bg-[#06150B]/40 px-4 py-5 backdrop-blur-sm sm:items-center" role="dialog" aria-modal="true">
       <motion.div
-        className="w-full max-w-2xl rounded-2xl border border-white/80 bg-white p-5 shadow-[0_30px_100px_rgba(6,21,11,0.28)] sm:p-6"
+        className="w-full max-w-2xl rounded-2xl border border-[#0F5A24]/8 bg-white p-5 shadow-[0_30px_100px_rgba(6,21,11,0.28)] sm:p-6"
         initial={{ opacity: 0, y: 24, scale: 0.98 }}
         animate={{ opacity: 1, y: 0, scale: 1 }}
         transition={{ duration: 0.22 }}
@@ -693,7 +699,7 @@ function LeadModal({
             type="button"
             onClick={onClose}
             aria-label="Close lead panel"
-            className="flex size-10 items-center justify-center rounded-2xl bg-[#F1F5F9] text-[#0F5A24] transition hover:bg-[#E8F7DF]"
+            className="flex size-10 items-center justify-center rounded-2xl bg-[#F1F5F9] text-[#0F5A24] transition hover:bg-[#E8F7DF] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#65C22E]/70"
           >
             <X className="size-5" />
           </button>
@@ -759,7 +765,7 @@ function LeadModal({
           <button
             type="button"
             onClick={onClose}
-            className="h-12 rounded-2xl border border-[#0F5A24]/12 bg-white px-5 text-sm font-extrabold text-[#0F5A24] transition hover:bg-[#FFF8E6]"
+            className="h-12 rounded-2xl border border-[#0F5A24]/12 bg-white px-5 text-sm font-extrabold text-[#0F5A24] transition hover:bg-[#FFF8E6] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#65C22E]/70"
           >
             Close
           </button>
@@ -767,7 +773,7 @@ function LeadModal({
             <button
               type="button"
               onClick={onClose}
-              className="inline-flex h-12 items-center justify-center gap-2 rounded-2xl bg-[#65C22E] px-5 text-sm font-extrabold text-[#073516] shadow-[0_16px_40px_rgba(101,194,46,0.26)] transition hover:-translate-y-0.5"
+              className="inline-flex h-12 items-center justify-center gap-2 rounded-2xl bg-[#65C22E] px-5 text-sm font-extrabold text-[#073516] shadow-[0_16px_40px_rgba(101,194,46,0.26)] transition hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#65C22E]/70"
             >
               <Save className="size-4" />
               Save Mock Changes
@@ -843,7 +849,7 @@ function LeadsView({
           <motion.article
             key={status}
             {...cardMotion}
-            className="rounded-2xl border border-white bg-white p-5 shadow-[0_18px_55px_rgba(15,90,36,0.07)]"
+            className="rounded-2xl border border-[#0F5A24]/8 bg-white p-5 shadow-[0_18px_55px_rgba(15,90,36,0.07)]"
           >
             <p className="text-sm font-extrabold text-[#405244]/58">{status}</p>
             <p className="mt-2 font-heading text-3xl font-extrabold tracking-normal text-[#0F5A24]">
@@ -878,7 +884,7 @@ function CustomersView() {
           <motion.article
             key={customer.email}
             {...cardMotion}
-            className="rounded-2xl border border-white bg-white p-5 shadow-[0_18px_55px_rgba(15,90,36,0.07)] transition hover:-translate-y-1"
+            className="rounded-2xl border border-[#0F5A24]/8 bg-white p-5 shadow-[0_18px_55px_rgba(15,90,36,0.08)] transition hover:-translate-y-1 hover:border-[#65C22E]/25 hover:shadow-[0_24px_70px_rgba(15,90,36,0.13)]"
           >
             <div className="flex items-start justify-between gap-4">
               <div>
@@ -919,7 +925,7 @@ function ReportsView() {
           <motion.article
             key={area}
             {...cardMotion}
-            className="rounded-2xl border border-white bg-white p-5 shadow-[0_18px_55px_rgba(15,90,36,0.07)]"
+            className="rounded-2xl border border-[#0F5A24]/8 bg-white p-5 shadow-[0_18px_55px_rgba(15,90,36,0.07)]"
           >
             <p className="text-sm font-extrabold text-[#405244]/58">{area}</p>
             <p className="mt-2 font-heading text-3xl font-extrabold tracking-normal text-[#0F5A24]">
@@ -961,7 +967,7 @@ function SettingsView() {
       />
       <motion.section
         {...cardMotion}
-        className="rounded-2xl border border-white bg-white p-6 shadow-[0_18px_55px_rgba(15,90,36,0.07)]"
+        className="rounded-2xl border border-[#0F5A24]/8 bg-white p-6 shadow-[0_18px_55px_rgba(15,90,36,0.07)]"
       >
         <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
           <div className="flex items-center gap-3">
@@ -1003,7 +1009,7 @@ function SettingsView() {
           <button
             type="button"
             onClick={() => setSaved(true)}
-            className="inline-flex h-12 items-center justify-center gap-2 rounded-2xl bg-[#65C22E] px-6 text-sm font-extrabold text-[#073516] shadow-[0_16px_40px_rgba(101,194,46,0.26)] transition hover:-translate-y-0.5"
+            className="inline-flex h-12 items-center justify-center gap-2 rounded-2xl bg-[#65C22E] px-6 text-sm font-extrabold text-[#073516] shadow-[0_16px_40px_rgba(101,194,46,0.26)] transition hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#65C22E]/70"
           >
             <Save className="size-4" />
             Save
@@ -1020,7 +1026,7 @@ function SettingsView() {
           <motion.article
             key={title}
             {...cardMotion}
-            className="rounded-2xl border border-white bg-white p-6 shadow-[0_18px_55px_rgba(15,90,36,0.07)]"
+            className="rounded-2xl border border-[#0F5A24]/8 bg-white p-6 shadow-[0_18px_55px_rgba(15,90,36,0.07)]"
           >
             <h2 className="font-heading text-xl font-extrabold tracking-normal text-[#0F5A24]">{title}</h2>
             <div className="mt-5 rounded-2xl bg-[#F8FAFC] p-4">
@@ -1039,7 +1045,7 @@ function TasksAndActivity() {
 
   return (
     <section className="grid gap-5 xl:grid-cols-[0.82fr_1.18fr]">
-      <motion.article {...cardMotion} className="rounded-2xl border border-white bg-white p-6 shadow-[0_20px_70px_rgba(15,90,36,0.08)]">
+      <motion.article {...cardMotion} className="rounded-2xl border border-[#0F5A24]/8 bg-white p-6 shadow-[0_20px_70px_rgba(15,90,36,0.08)]">
         <h2 className="font-heading text-xl font-extrabold tracking-normal text-[#0F5A24]">Today&apos;s Tasks</h2>
         <div className="mt-5 grid gap-3">
           {tasks.map((task, index) => (
@@ -1062,7 +1068,7 @@ function TasksAndActivity() {
         </div>
       </motion.article>
 
-      <motion.article {...cardMotion} className="rounded-2xl border border-white bg-white p-6 shadow-[0_20px_70px_rgba(15,90,36,0.08)]">
+      <motion.article {...cardMotion} className="rounded-2xl border border-[#0F5A24]/8 bg-white p-6 shadow-[0_20px_70px_rgba(15,90,36,0.08)]">
         <h2 className="font-heading text-xl font-extrabold tracking-normal text-[#0F5A24]">Recent Activity</h2>
         <div className="mt-6 grid gap-5">
           {activity.map((item, index) => {
@@ -1103,7 +1109,7 @@ function MockNotice({
 
   return (
     <motion.div
-      className="fixed bottom-5 right-5 z-[90] flex max-w-sm items-start gap-3 rounded-2xl border border-white/80 bg-white p-4 text-[#12321C] shadow-[0_24px_80px_rgba(15,90,36,0.18)]"
+      className="fixed inset-x-4 bottom-5 z-[90] flex max-w-sm items-start gap-3 rounded-2xl border border-[#0F5A24]/8 bg-white p-4 text-[#12321C] shadow-[0_24px_80px_rgba(15,90,36,0.18)] sm:left-auto sm:right-5"
       initial={{ opacity: 0, y: 18, scale: 0.98 }}
       animate={{ opacity: 1, y: 0, scale: 1 }}
       transition={{ duration: 0.22 }}
@@ -1119,7 +1125,7 @@ function MockNotice({
         type="button"
         onClick={onClose}
         aria-label="Dismiss message"
-        className="ml-auto flex size-8 shrink-0 items-center justify-center rounded-xl bg-[#F1F5F9] text-[#0F5A24]"
+        className="ml-auto flex size-8 shrink-0 items-center justify-center rounded-xl bg-[#F1F5F9] text-[#0F5A24] transition hover:bg-[#E8F7DF] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#65C22E]/70"
       >
         <X className="size-4" />
       </button>

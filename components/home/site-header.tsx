@@ -47,7 +47,7 @@ export function SiteHeader() {
             <Link
               key={item.href}
               href={item.href}
-              className="text-sm font-bold text-[#233528]/76 transition hover:text-[#0F5A24]"
+              className="rounded-full px-1 py-2 text-sm font-bold text-[#233528]/76 transition hover:text-[#0F5A24] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#65C22E]/70 focus-visible:ring-offset-4 focus-visible:ring-offset-[#FFF8E6]"
             >
               {item.label}
             </Link>
@@ -84,7 +84,7 @@ export function SiteHeader() {
                   <Link
                     key={item.href}
                     href={item.href}
-                    className="rounded-2xl px-4 py-3 text-sm font-extrabold text-[#233528]/82 transition hover:bg-white/80 hover:text-[#0F5A24]"
+                    className="rounded-2xl px-4 py-3 text-sm font-extrabold text-[#233528]/82 transition hover:bg-white/80 hover:text-[#0F5A24] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#65C22E]/70"
                     onClick={() => setIsMenuOpen(false)}
                   >
                     {item.label}
