@@ -39,6 +39,8 @@ const reveal: Variants = {
   visible: { opacity: 1, y: 0 },
 };
 
+const SHOW_TESTIMONIALS = false;
+
 const features: Array<{
   title: string;
   copy: string;
@@ -206,6 +208,70 @@ const testimonialImages = [
     className: "lg:rotate-[2deg]",
   },
 ];
+
+function TestimonialsSection() {
+  return (
+    <section className="overflow-hidden bg-[#F7F9F4] px-4 py-24 sm:px-6 lg:px-8 lg:py-32">
+      <div className="mx-auto max-w-[104rem]">
+        <motion.div
+          className="mx-auto max-w-4xl text-center"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.38 }}
+          variants={reveal}
+          transition={{ duration: 0.65 }}
+        >
+          <div>
+            <p className="text-sm font-extrabold uppercase tracking-[0.18em] text-[#B68020]">
+              Customer Reviews
+            </p>
+            <h2 className="mt-4 font-heading text-4xl font-extrabold tracking-tight text-[#0F5A24] sm:text-5xl lg:text-6xl">
+              Trusted by homeowners who want their weekends back.
+            </h2>
+            <p className="mx-auto mt-5 max-w-2xl text-base leading-8 text-[#405244]">
+              Realistic placeholder customer stories, presented with the same
+              polished image-card style as the reference.
+            </p>
+          </div>
+        </motion.div>
+
+        <motion.div
+          className="relative mt-16 overflow-hidden rounded-[2.5rem] border border-[#0F5A24]/12 bg-[linear-gradient(105deg,rgba(232,247,223,0.72),rgba(255,248,230,0.9)_48%,rgba(234,246,255,0.58))] p-4 shadow-[0_32px_110px_rgba(31,46,35,0.12)] sm:p-6 lg:rounded-[3rem] lg:p-5 xl:p-6"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.24 }}
+          variants={reveal}
+          transition={{ duration: 0.7, delay: 0.08 }}
+        >
+          <div className="absolute inset-4 rounded-[2rem] border border-white/70 lg:rounded-[2.4rem]" />
+          <div className="relative grid gap-6 lg:grid-cols-3 lg:items-center lg:gap-3 xl:gap-4">
+            {testimonialImages.map((testimonial, index) => (
+              <motion.div
+                key={testimonial.src}
+                className={`group ${testimonial.className}`}
+                initial={{ opacity: 0, y: 34, rotate: 0 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.35 }}
+                transition={{ duration: 0.64, delay: index * 0.09, ease: [0.22, 1, 0.36, 1] }}
+                whileHover={{ y: -8, scale: 1.015 }}
+              >
+                <div className="relative aspect-[1492/1054] overflow-hidden rounded-[1.6rem] bg-white p-2 shadow-[0_26px_70px_rgba(31,46,35,0.18)] transition group-hover:shadow-[0_34px_90px_rgba(31,46,35,0.24)] sm:rounded-[2rem] sm:p-3">
+                  <Image
+                    src={testimonial.src}
+                    alt={testimonial.alt}
+                    fill
+                    sizes="(max-width: 1024px) 100vw, 42vw"
+                    className="rounded-[1.25rem] object-cover sm:rounded-[1.65rem]"
+                  />
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
+      </div>
+    </section>
+  );
+}
 
 export function InfoSections() {
   return (
@@ -461,65 +527,7 @@ export function InfoSections() {
         </div>
       </section>
 
-      <section className="overflow-hidden bg-[#F7F9F4] px-4 py-24 sm:px-6 lg:px-8 lg:py-32">
-        <div className="mx-auto max-w-[104rem]">
-          <motion.div
-            className="mx-auto max-w-4xl text-center"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.38 }}
-            variants={reveal}
-            transition={{ duration: 0.65 }}
-          >
-            <div>
-              <p className="text-sm font-extrabold uppercase tracking-[0.18em] text-[#B68020]">
-                Customer Reviews
-              </p>
-              <h2 className="mt-4 font-heading text-4xl font-extrabold tracking-tight text-[#0F5A24] sm:text-5xl lg:text-6xl">
-                Trusted by homeowners who want their weekends back.
-              </h2>
-              <p className="mx-auto mt-5 max-w-2xl text-base leading-8 text-[#405244]">
-                Realistic placeholder customer stories, presented with the same
-                polished image-card style as the reference.
-              </p>
-            </div>
-          </motion.div>
-
-          <motion.div
-            className="relative mt-16 overflow-hidden rounded-[2.5rem] border border-[#0F5A24]/12 bg-[linear-gradient(105deg,rgba(232,247,223,0.72),rgba(255,248,230,0.9)_48%,rgba(234,246,255,0.58))] p-4 shadow-[0_32px_110px_rgba(31,46,35,0.12)] sm:p-6 lg:rounded-[3rem] lg:p-5 xl:p-6"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.24 }}
-            variants={reveal}
-            transition={{ duration: 0.7, delay: 0.08 }}
-          >
-            <div className="absolute inset-4 rounded-[2rem] border border-white/70 lg:rounded-[2.4rem]" />
-            <div className="relative grid gap-6 lg:grid-cols-3 lg:items-center lg:gap-3 xl:gap-4">
-              {testimonialImages.map((testimonial, index) => (
-                <motion.div
-                  key={testimonial.src}
-                  className={`group ${testimonial.className}`}
-                  initial={{ opacity: 0, y: 34, rotate: 0 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, amount: 0.35 }}
-                  transition={{ duration: 0.64, delay: index * 0.09, ease: [0.22, 1, 0.36, 1] }}
-                  whileHover={{ y: -8, scale: 1.015 }}
-                >
-                  <div className="relative aspect-[1492/1054] overflow-hidden rounded-[1.6rem] bg-white p-2 shadow-[0_26px_70px_rgba(31,46,35,0.18)] transition group-hover:shadow-[0_34px_90px_rgba(31,46,35,0.24)] sm:rounded-[2rem] sm:p-3">
-                    <Image
-                      src={testimonial.src}
-                      alt={testimonial.alt}
-                      fill
-                      sizes="(max-width: 1024px) 100vw, 42vw"
-                      className="rounded-[1.25rem] object-cover sm:rounded-[1.65rem]"
-                    />
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-          </motion.div>
-        </div>
-      </section>
+      {SHOW_TESTIMONIALS && <TestimonialsSection />}
 
       <section
         id="service-area"
